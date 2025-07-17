@@ -100,6 +100,13 @@ $sendLocationBtn.addEventListener("click", () => {
     $sendLocationBtn.setAttribute("disabled", "disabled");
 
     navigator.geolocation.getCurrentPosition(position => {
+      console.log(position.coords)
+
+      if(position.coords.longitude>0 && position.coords.longitude <180){
+        alert("west");
+      }else{
+        alert("east");
+      }
       socket.emit(
         "sendLocation",
         {
