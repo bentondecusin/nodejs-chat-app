@@ -98,14 +98,14 @@ $sendLocationBtn.addEventListener("click", () => {
     return alert("Geolocation is not supported by your browser.");
   } else {
     $sendLocationBtn.setAttribute("disabled", "disabled");
-
     navigator.geolocation.getCurrentPosition(position => {
       console.log(position.coords)
 
       if(position.coords.longitude>0 && position.coords.longitude <180){
-        alert("west");
-      }else{
         alert("east");
+      }else{
+        alert("west");
+
       }
       socket.emit(
         "sendLocation",
